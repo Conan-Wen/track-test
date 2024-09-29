@@ -62,6 +62,12 @@ exports.getUser = (req, res) => {
     const user = users.find(u => u.user_id === user_id);
     const authUser = users.find(u => u.user_id === authUserId);
 
+    if (authUserId !== user_id) {
+        return res.status(403).json({
+            "message": "No Permission for Update"
+        });
+    }
+
     if (!user) {
         return res.status(404).json({ message: 'No User found' });
     }
@@ -95,6 +101,12 @@ exports.updateUser = (req, res) => {
 
     const user = users.find(u => u.user_id === user_id);
 
+    if (authUserId !== user_id) {
+        return res.status(403).json({
+            "message": "No Permission for Update"
+        });
+    }
+
     if (!user) {
         return res.status(404).json({ message: 'No User found' });
     }
@@ -102,12 +114,6 @@ exports.updateUser = (req, res) => {
     const validPassword = bcrypt.compareSync(password, user.password);
     if (!validPassword) {
         return res.status(401).json({ message: 'Authentication Failed' });
-    }
-
-    if (authUserId !== user_id) {
-        return res.status(403).json({
-            "message": "No Permission for Update"
-        });
     }
 
     if (!nickname && !comment) {
