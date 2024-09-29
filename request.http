@@ -1,0 +1,27 @@
+###
+POST http://localhost:3000/users/signup
+Content-Type: application/json
+
+{
+  "user_id": "TaroYamada",
+  "password": "PaSSwd4TY"
+}
+
+
+###
+GET http://localhost:3000/users/TaroYamada
+Authorization: Basic VGFyb1lhbWFkYTpQYVNTd2Q0VFk=
+
+###
+PATCH http://localhost:3000/users/TaroYamada
+Authorization: Basic VGFyb1lhbWFkYTpQYVNTd2Q0VFk=
+Content-Type: application/json
+
+{
+  "nickname": "たろー",
+  "comment": "僕は元気です"
+}
+
+###
+POST http://localhost:3000/users/close
+Authorization: Basic VGFyb1lhbWFkYTpQYVNTd2Q0VFk=
