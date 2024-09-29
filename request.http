@@ -3,12 +3,13 @@ POST http://localhost:3000/signup
 Content-Type: application/json
 
 {
-  "user_id": "TaroYamada"
+  "user_id": "TaroYamada",
+  "password": "PaSSwd4TY"
 }
 
 
 ###
-GET http://localhost:3000/TaroYamada
+GET http://localhost:3000/users/TaroYamada
 Authorization: Basic VGFyb1lhbWFkYTpQYVNTd2Q0VFk=
 
 ###
