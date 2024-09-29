@@ -1,12 +1,10 @@
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 // in-memory データベース
 let users = [];
 
 exports.signup = (req, res) => {
-    const user_id = req.body.user_id.trim();
-    const password = req.body.password.trim();
+    const { user_id, password } = req.body;
 
     if (!user_id || !password) {
         return res.status(400).json({

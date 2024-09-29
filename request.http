@@ -1,19 +1,18 @@
 ###
-POST http://localhost:3000/users/signup
+POST http://localhost:3000/signup
 Content-Type: application/json
 
 {
-  "user_id": "TaroYamada",
-  "password": "PaSSwd4TY"
+  "user_id": "TaroYamada"
 }
 
 
 ###
-GET http://localhost:3000/users/TaroYamada
+GET http://localhost:3000/TaroYamada
 Authorization: Basic VGFyb1lhbWFkYTpQYVNTd2Q0VFk=
 
 ###
-PATCH http://localhost:3000/users/TaroYamada
+PATCH http://localhost:3000/TaroYamada
 Authorization: Basic VGFyb1lhbWFkYTpQYVNTd2Q0VFk=
 Content-Type: application/json
 
@@ -23,5 +22,5 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/users/close
+POST http://localhost:3000/close
 Authorization: Basic VGFyb1lhbWFkYTpQYVNTd2Q0VFk=
