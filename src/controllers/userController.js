@@ -1,7 +1,9 @@
 const bcrypt = require('bcryptjs');
 
 // in-memory データベース
-let users = [];
+let users = [
+    { user_id: 'TaroYamada', password: bcrypt.hashSync('PaSSwd4TY', 8), nickname: 'たろー', comment: '僕は元気です' },
+];
 
 exports.signup = (req, res) => {
     const { user_id, password } = req.body;
@@ -61,12 +63,6 @@ exports.getUser = (req, res) => {
 
     const user = users.find(u => u.user_id === user_id);
     const authUser = users.find(u => u.user_id === authUserId);
-
-    if (authUserId !== user_id) {
-        return res.status(403).json({
-            "message": "No Permission for Update"
-        });
-    }
 
     if (!user) {
         return res.status(404).json({ message: 'No User found' });
