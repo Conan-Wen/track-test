@@ -60,12 +60,13 @@ exports.getUser = (req, res) => {
     const [authUserId, password] = Buffer.from(base64Credentials, 'base64').toString('ascii').split(':');
 
     const user = users.find(u => u.user_id === user_id);
+    const authUser = users.find(u => u.user_id === authUserId);
 
     if (!user) {
         return res.status(404).json({ message: 'No User found' });
     }
 
-    const validPassword = bcrypt.compareSync(password, user.password);
+    const validPassword = bcrypt.compareSync(password, authUser.password);
     if (!validPassword) {
         return res.status(401).json({ message: 'Authentication Failed' });
     }
